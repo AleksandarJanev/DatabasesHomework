@@ -1,0 +1,76 @@
+CREATE TABLE Kadministrator(
+id_admin NUMERIC (18,0) IDENTITY NOT NULL PRIMARY KEY,
+username NVARCHAR(50) NULL,
+password NVARCHAR(50) NULL,
+ime NVARCHAR(50) NULL,
+telefon NVARCHAR(50) NULL
+);
+
+CREATE TABLE Jazik(
+id_jazik NUMERIC (18,0) IDENTITY NOT NULL PRIMARY KEY,
+jazik NVARCHAR(50) NULL
+);
+
+CREATE TABLE Knovost(
+id_novost NUMERIC (18,0) IDENTITY NOT NULL PRIMARY KEY,
+adm_id_admin NUMERIC (18,0) NULL,
+jazik_id_jazikn NUMERIC (18,0) NULL,
+naslov NVARCHAR(50) NULL,
+opis NVARCHAR(1500) NULL,
+datum_od DATETIME NULL,
+datum_do DATETIME NULL
+);
+
+CREATE TABLE Kdokument(
+id_dokument NUMERIC (18,0) IDENTITY NOT NULL PRIMARY KEY,
+naslov NVARCHAR(50) NULL,
+jazik_id_jazikd NUMERIC (18,0) NULL,
+dokument NVARCHAR(50) NULL,
+prikaz NUMERIC (18,0) NULL
+);
+
+CREATE TABLE Email(
+id_posetitel NUMERIC (18,0) IDENTITY NOT NULL PRIMARY KEY,
+ime NVARCHAR(50) NULL,
+mail NVARCHAR(50) NULL
+);
+
+CREATE TABLE Email_Grupa(
+id_grupa NUMERIC (18,0) IDENTITY NOT NULL PRIMARY KEY,
+jazik_id_jazikm NUMERIC (18,0) NULL,
+naziv NVARCHAR(50) NULL,
+aktivna NUMERIC (18,0) NULL
+);
+
+CREATE TABLE Email_Poraka(
+id_poraka NUMERIC (18,0) IDENTITY NOT NULL PRIMARY KEY,
+grupa_id_grupa NUMERIC (18,0) NULL,
+datum DATETIME NULL,
+naslov NVARCHAR(50) NULL,
+tekst NVARCHAR(500) NULL
+);
+
+CREATE TABLE Mailing(
+email_id_posetitel NUMERIC (18,0) NULL,
+email_id_grupa NUMERIC (18,0) NULL
+);
+
+CREATE TABLE Galerija(
+id_galerija NUMERIC (18,0) IDENTITY NOT NULL PRIMARY KEY,
+preview NUMERIC (18,0) NULL
+);
+
+CREATE TABLE Galerija_Opis(
+gal_id_galerija NUMERIC (18,0) NULL,
+jazik_id_jazikg NUMERIC (18,0) NULL,
+naslov NVARCHAR(50) NULL,
+opis NVARCHAR(500) NULL
+);
+
+CREATE TABLE Galerija_Slika(
+id_slika NUMERIC (18,0) IDENTITY NOT NULL PRIMARY KEY,
+gal_id_galerijas NUMERIC (18,0) NULL,
+opisslika NVARCHAR(300) NULL,
+slika NVARCHAR(50) NULL,
+opisslikaeng NVARCHAR(300) NULL
+);
